@@ -1,15 +1,35 @@
 
 # TODO: Step 1 - return shape from user input (it can't be blank and must be a valid shape!)     
 def get_shape():
-    
-    return ""
+    while True:
+        valid_shapes = ["triangle", "square", "pyramid"]
+        shape = input("Shape: ").strip().lower()
+
+        if shape not in valid_shapes:
+            continue
+
+        if shape == " ":
+            continue
+        else:
+            break
+        
+    return shape
 
 
 # TODO: Step 2 - return height from user input (it must be int!)
 #       The maximum possible height must be 80
 def get_height():
     
-    return ""
+    while True:
+        height = int(input("Height?: "))
+
+        if height > 80:
+            continue
+
+        else:
+            break
+
+    return height
 
 
 # TODO: Step 3 Complete the required shapes below
@@ -49,7 +69,27 @@ def draw_triangle_prime(height):
     numbers and have more than two positive divisors.
     
 """
-    pass
+    def is_prime(height):
+        if height < 2:
+            return False
+        for i in range(2, int(height**0.5) + 1):
+            if height % i == 0:
+                return False
+        return True
+    current = 2  # Starting number
+
+    for i in range(1, height + 1):
+        j = 0
+        while j < i:
+            if is_prime(current):
+                print(current, end=" ")
+                j += 1
+            current += 1
+        print()
+
+
+
+    return is_prime(height)
          
                 
 # TODO: Step 4 - add support for other shapes
